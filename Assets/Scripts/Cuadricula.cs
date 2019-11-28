@@ -5,15 +5,26 @@ using UnityEngine;
 
 public class Cuadricula : MonoBehaviour
 {
+    //llamar a la linea
+
+    public GameObject[] cubos;
+
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.CreatePrimitive(PrimitiveType.Cube);
-    }
 
+       // GameObject.CreatePrimitive();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            
+
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         
+
     }
 }
