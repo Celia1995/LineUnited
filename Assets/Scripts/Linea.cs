@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Linea : MonoBehaviour
+public class LineaNuestra : MonoBehaviour
 {
-    //SI TIENE UN COLLIDER QUE APAREZCA CON INVOKE
-
-    // bool si esta false, lo activamos su mesh renderer.
-
-    //GameObject line;
-
-    //ejercicio de crear dos lineas formando una L al reves
+    /*
+    //APAREZCAN LINEAS
 
     public GameObject lineaHorizontal;
     public GameObject lineaVertical;
@@ -163,26 +158,16 @@ public class Linea : MonoBehaviour
 
         }
 
-
-        //Vector3 posicionVertical = Vector3.zero;
-        //lineaVertical.transform.position = posicionVertical;
-
-        //Vector3 posicionBorde=Vector3.zero;
-        //posicionBorde.x = (casillasX + (casillasX * offset)) / 2;
-        //posicionBorde.y = (-casillasY - (casillasY * offset)) / 2;
-        //bordeTemporal.transform.position = posicionBorde;
-
-
+        
     }
 
 
-    //bordeTemporal = Instantiate(borde, Vector3.zero, Quaternion.identity);
+    
 
 
+     // AL CLICKEAR SE ILUMINE Y SE SELECCIONE
 
-
-
-    /* Renderer r;
+     Renderer r;
      bool clickeada;
 
      public void Awake()
@@ -204,5 +189,6 @@ public class Linea : MonoBehaviour
      {
          if (clickeada == false) 
              r.enabled = false;
-     }*/
+     }
+     */
 }
