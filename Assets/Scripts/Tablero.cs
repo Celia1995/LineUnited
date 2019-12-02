@@ -1,65 +1,92 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System;
+using System.Text;
 
-public class TableroNuestro : MonoBehaviour
+public class Tablero : MonoBehaviour
 {
-    /*
-    public GameObject borde;
-    public GameObject casilla;
-    Vector3 posicionInicial;
-    Vector3 tamañoBorde;
+    public Celda celda;
+    public Linea lineaH, lineaV;
+    public Material[] materialsRegions;
     float offset;
-    int casillasX, casillasY;
+    Vector3 offsetX, offsetY;
 
-    // Start is called before the first frame update
-    void Start()
+    List<List<int>> intmap;
+    List<List<Celda>> tablero;
+    
+
+    public void Start()
     {
-        posicionInicial = new Vector3(0.5f, -0.5f, 0);
-        casillasX = 10;
-        casillasY = 10;
-        offset = 0.1f;
+        intmap = ReadMap("./assets/SceneFile/CatFile.txt");
 
-        GameObject bordeTemporal;
+        Transform goCeldas = new GameObject("Celdas").transform;
+        goCeldas.parent = transform;
+        Transform goLineas = new GameObject("Lineas").transform;
+        goLineas.parent = transform;
 
-        // MurO EnterO
-        bordeTemporal = Instantiate(borde, Vector3.zero, Quaternion.identity);
-        Vector3 posicionBorde=Vector3.zero;
-        posicionBorde.x = (casillasX + (casillasX * offset))/2;
-        posicionBorde.y = (-casillasY - (casillasY * offset)) /2;
-        bordeTemporal.transform.position = posicionBorde;
-        bordeTemporal.transform.localScale = new Vector3(casillasX + casillasX * offset + .5f, casillasY + casillasY * offset + .5f, .2f);
-       //()
-                //=2.5f                                 //=2.5f         //0.2f          Z
+        offset = 0.55f;
+        offsetX = new Vector3(offset, 0, 0);
+        offsetY = new Vector3(0, offset, 0);
 
-
-        //float longitudTablero = casillasX + (casillasX * offset);
-        //bordeTemporal.transform.position = posicionInicial + new Vector3(((casillasX+(casillasX*offset)-offset)/2)-.5f, +.5f+.1f, 0);
-        //bordeTemporal.transform.localScale = new Vector3(11, .2f, 1);
-
-
-        for (int j = 0; j < casillasY; j++)
+        tablero = new List<List<Celda>>();
+        // Create Board
+        for (int j = 0; j < intmap.Count; j++)
         {
-            for (int i = 0; i < casillasX; i++)
+            tablero.Add(new List<Celda>());
+            for (int i = 0; i < intmap[j].Count; i++)
             {
-                GameObject casillaTemporal = Instantiate(casilla, 
-                    posicionInicial + new Vector3(i+i*offset, -j-j*offset, 0), Quaternion.identity);
-                casillaTemporal.name = "Casilla["+i+","+j+"]";
-                casillaTemporal.transform.parent = transform; 
+                Celda tempCell = Instantiate(celda, new Vector3(i + i * 0.1f, -j - j*0.1f, 0), Quaternion.identity).GetComponent<Celda>();
+                tempCell.name = "Celda[" + i + "," + j + "]";
+                tempCell.SetMaterial(materialsRegions[intmap[j][i]]);
+                tempCell.transform.parent = goCeldas;
+                if (i > 0)
+                    tempCell.leftLine = tablero[j][i-1].rightLine;
+                if (j > 0)
+                    tempCell.topLine = tablero[j-1][i].bottomLine;
+                if (i< (intmap[j].Count))
+                {
+                    Linea linVertical = Instantiate(lineaV, tempCell.transform.position + new Vector3(0.55f, 0, 0), Quaternion.identity);
+                    tempCell.rightLine = linVertical;
+                    linVertical.name = "LineaV[" + i + "," + j + "]";
+                }
+                if (j < (intmap.Count))
+                {
+                    Linea linHorizontal = Instantiate(lineaH, tempCell.transform.position + new Vector3(0, -0.55f, 0), Quaternion.identity);
+                    tempCell.bottomLine = linHorizontal;
+                    linHorizontal.name = "LineaH[" + i + "," + j + "]";
+                }
+                tablero[j].Add(tempCell);
             }
         }
-         
-        //posicionInicial = Vector3.zero;
-        //Instantiate(casilla, posicionInicial, Quaternion.identity);
-        //posicionInicial += Vector3.right;
-        //Instantiate(casilla, posicionInicial, Quaternion.identity);
-        //posicionInicial += Vector3.right;
-        //Instantiate(casilla, posicionInicial, Quaternion.identity);
+
+        // Create board borders
+        Transform cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
     }
-    */
-    // Update is called once per frame
-    void Update()
+
+    private List<List<int>> ReadMap(string file)
     {
-        
+        List<List<int>> tempMap = new List<List<int>>();
+
+        using (StreamReader reader = new StreamReader(file, Encoding.ASCII))
+        {
+            string str;
+            while ((str = reader.ReadLine()) != null)
+            {
+                List<int> currentLine = new List<int>();
+                for (int i = 0; i < str.Length; i++)
+                    currentLine.Add(Convert.ToInt32(str[i].ToString()));
+                tempMap.Add(currentLine);
+            }
+        }
+        return tempMap;
     }
 }
