@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4147025133042903360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4147025133042903367}
+  - component: {fileID: 4147025133042903365}
+  m_Layer: 0
+  m_Name: Tablero
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4147025133042903367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147025133042903360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2651359, y: -0.47720152, z: -0.773173}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4147025133042903365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147025133042903360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88086c24d31be4f40b9be1b1917da901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NombreFichero: CatFIle.txt
+  celda: {fileID: 7915714272997669073, guid: b2fb861ec7c89e24f8a39f36fcfae9fe, type: 3}
+  lineaH: {fileID: 3553914784990374002, guid: f65534db32c07824792763b2db9741d5, type: 3}
+  lineaV: {fileID: 3634082162658183247, guid: 6b2353fe9b721704f84cb0cf8f42cb2a, type: 3}
+  materialsRegions:
+  - {fileID: 2100000, guid: f6de97c1f5cc918488acad584f6c6a7b, type: 2}
+  - {fileID: 2100000, guid: e6200d82ac2cf174d93038ca575c6382, type: 2}
+  - {fileID: 2100000, guid: 6491eca829cbbb04199a306255d1e3af, type: 2}
+  - {fileID: 2100000, guid: c22dac2157d14324bb04cedd9a1ad52b, type: 2}
+  - {fileID: 2100000, guid: 44ec3635fffcda9459f42f3ebccc7b65, type: 2}
+  - {fileID: 2100000, guid: 3cf25dcaedfdd6a4a89e43d6fa0689bc, type: 2}
+  - {fileID: 2100000, guid: 3d36ad8a5d6edef47b1fa5e355d0d63e, type: 2}
+  - {fileID: 2100000, guid: ee926e31b0cbba241b80c55091ade748, type: 2}
+  - {fileID: 2100000, guid: 466dd8c5a858b9b4290039645473de91, type: 2}
+  - {fileID: 2100000, guid: 403b98602ebaf144a9a14b90b59cd3c9, type: 2}

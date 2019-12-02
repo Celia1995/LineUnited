@@ -7,6 +7,7 @@ using System.Text;
 
 public class Tablero : MonoBehaviour
 {
+    public string NombreFichero;
     public Celda celda;
     public Linea lineaH, lineaV;
     public Material[] materialsRegions;
@@ -19,7 +20,7 @@ public class Tablero : MonoBehaviour
 
     public void Start()
     {
-        intmap = ReadMap("./assets/SceneFile/CatFile.txt");
+        intmap = ReadMap("./assets/SceneFile/"+NombreFichero);
 
         Transform goCeldas = new GameObject("Celdas").transform;
         goCeldas.parent = transform;
@@ -65,10 +66,15 @@ public class Tablero : MonoBehaviour
         Transform cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
         cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.transform.position = new Vector3(4.95f, 0.62f, 0);
+
         cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.transform.position = new Vector3(4.95f, -10.525f, 0);
+
         cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
-        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform; 
+        
         cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
     }
 
