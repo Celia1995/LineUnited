@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tablero : MonoBehaviour
+public class TableroNuestro : MonoBehaviour
 {
+   
     public GameObject borde;
     public GameObject casilla;
     Vector3 posicionInicial;
@@ -21,13 +22,15 @@ public class Tablero : MonoBehaviour
 
         GameObject bordeTemporal;
 
-        // Muro Arriba
+        // MurO EnterO
         bordeTemporal = Instantiate(borde, Vector3.zero, Quaternion.identity);
         Vector3 posicionBorde=Vector3.zero;
         posicionBorde.x = (casillasX + (casillasX * offset))/2;
         posicionBorde.y = (-casillasY - (casillasY * offset)) /2;
         bordeTemporal.transform.position = posicionBorde;
         bordeTemporal.transform.localScale = new Vector3(casillasX + casillasX * offset + .5f, casillasY + casillasY * offset + .5f, .2f);
+       //()
+                //=2.5f                                 //=2.5f         //0.2f          Z
 
 
         //float longitudTablero = casillasX + (casillasX * offset);
@@ -53,7 +56,7 @@ public class Tablero : MonoBehaviour
         //posicionInicial += Vector3.right;
         //Instantiate(casilla, posicionInicial, Quaternion.identity);
     }
-
+ 
     // Update is called once per frame
     void Update()
     {
