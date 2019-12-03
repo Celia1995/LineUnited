@@ -591,10 +591,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: a0564bdd-cd4d-484d-accd-00a5a249d392
+  cloudProjectId: 9967efd7-70b0-4de8-80a1-05536a3ff561
   framebufferDepthMemorylessMode: 0
-  projectName: interfaz in game League of Lines
-  organizationId: josegemas1999
+  projectName: InterfazLOLMenuPrincipal
+  organizationId: srchuli
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

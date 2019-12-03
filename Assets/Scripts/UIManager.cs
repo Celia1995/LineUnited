@@ -12,9 +12,11 @@ public class UIManager : MonoBehaviour
     public GameObject botonDosJugadores;
     public GameObject botonTresJugadores;
     public GameObject botonCuatroJugadores;
+    public GameObject botonOpciones;
     public GameObject botonVolver;
     public GameObject botonesSalir;
     public GameObject botonNo;
+    public GameObject panelOpciones;
 
 
     public void MostrarBotonTitulo(bool value)
@@ -42,6 +44,11 @@ public class UIManager : MonoBehaviour
         botonCuatroJugadores.SetActive(value);
     }
 
+    public void MostrarBotonOpciones(bool value)
+    {
+        botonOpciones.SetActive(value);
+    }
+
     public void MostrarBotonVolver(bool value)
     {
         botonVolver.SetActive(value);
@@ -57,10 +64,23 @@ public class UIManager : MonoBehaviour
         botonNo.SetActive(value);
     }
 
+    public void MostrarBotonPanelOpciones(bool value)
+    {
+        panelOpciones.SetActive(value);
+    }
+
     public void MostrarBotonMenuPrincipal(bool value)
     {
         MostrarBotonJugar(!value);
         botonMenuPrincipal.SetActive(value);
+    }
+
+    public void MostrarOpciones(bool value)
+    {
+        MostrarBotonMenuPrincipal(!value);
+        MostrarBotonJugar(!value);
+        MostrarBotonTitulo(!value);
+        panelOpciones.SetActive(value);
     }
 
     public void MostrarSegundaPantalla(bool value)
@@ -76,6 +96,7 @@ public class UIManager : MonoBehaviour
         MostrarSegundaPantalla(!value);
         MostrarBotonJugar(!value);
         MostrarBotonSalir(!value);
+        MostrarBotonPanelOpciones(!value);
         botonMenuPrincipal.SetActive(value);
     }
 
