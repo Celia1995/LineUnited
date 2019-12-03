@@ -12,85 +12,104 @@ public class Tablero : MonoBehaviour
     public Celda celda;
     public Linea lineaH, lineaV;
     public Material[] materialsRegions;
-    float offset;
-    Vector3 offsetX, offsetY;
+    public float tamCelda = 1F;
+    public float tamLinea = .1f;
+    public float anchoBorde = .25f;
 
     List<List<int>> intmap;
-    List<List<Celda>> tablero;
-    
+    List<List<Celda>> tablero;    
 
     public void Start()
     {
         intmap = ReadMap("./assets/SceneFile/"+NombreFichero);
 
+        int filas = intmap.Count;
+        int columnas = 0;
+
         Transform goCeldas = new GameObject("Celdas").transform;
         goCeldas.parent = transform;
         Transform goLineas = new GameObject("Lineas").transform;
         goLineas.parent = transform;
-
-        offset = 0.55f;
-        offsetX = new Vector3(offset, 0, 0);
-        offsetY = new Vector3(0, offset, 0);
+        Transform goBordes = new GameObject("Bordes").transform;
+        goBordes.parent = transform;
 
         tablero = new List<List<Celda>>();
         // Create Board
         for (int j = 0; j < intmap.Count; j++)
         {
+            if (intmap[j].Count > columnas)
+                columnas = intmap[j].Count;
+
             tablero.Add(new List<Celda>());
             for (int i = 0; i < intmap[j].Count; i++)
             {
-                Celda tempCell = Instantiate(celda, new Vector3(i + i * 0.1f, -j - j*0.1f, 0), Quaternion.identity).GetComponent<Celda>();
-                tempCell.name = "Celda[" + i + "," + j + "]";
+                Celda tempCell = Instantiate(celda, new Vector3(i * tamCelda + i * tamLinea, -j * tamCelda - j* tamLinea, 0F), Quaternion.identity);
+                tempCell.name = "Celda[" + j + "," + i + "]";
                 tempCell.SetMaterial(materialsRegions[intmap[j][i]]);
-                tempCell.transform.parent = goCeldas;
+                tempCell.transform.SetParent(goCeldas);
+
                 if (i > 0)
                     tempCell.leftLine = tablero[j][i-1].rightLine;
+
                 if (j > 0)
                     tempCell.topLine = tablero[j-1][i].bottomLine;
-                if (i< (intmap[j].Count-1))
+
+                if (i < intmap[j].Count - 1) 
                 {
-                    Linea linVertical = Instantiate(lineaV, tempCell.transform.position + new Vector3(0.55f, 0, 0), Quaternion.identity);
+                    Linea linVertical = Instantiate(lineaV, tempCell.transform.position + Vector3.right * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.rightLine = linVertical;
-                    linVertical.name = "LineaV[" + i + "," + j + "]";
+                    linVertical.name = "LineaV[" + j + "," + i + "]";
+                    linVertical.transform.rotation = Quaternion.Euler(90F, 0F, 0F);
+                    linVertical.transform.SetParent(goLineas);
                 }
-                if (j < (intmap.Count-1))
+
+                if (j < intmap.Count - 1) 
                 {
-                    Linea linHorizontal = Instantiate(lineaH, tempCell.transform.position + new Vector3(0, -0.55f, 0), Quaternion.identity);
+                    Linea linHorizontal = Instantiate(lineaH, tempCell.transform.position + Vector3.down * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.bottomLine = linHorizontal;
-                    linHorizontal.name = "LineaH[" + i + "," + j + "]";
+                    linHorizontal.name = "LineaH[" + j + "," + i + "]";
+                    linHorizontal.transform.SetParent(goLineas);
                 }
+
                 tablero[j].Add(tempCell);
             }
-        }
+        }        
+
+        float ancho = columnas * tamCelda + (columnas - 1F) * tamLinea;
+        float alto = filas * tamCelda + (filas - 1) * tamLinea;
 
         // Create board borders
         //Borde izquierdo
         Transform cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
-        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.155f, .25f, 1);
-        cube.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        cube.transform.position = new Vector3(10.52f, -4.95f, 0);
+        cube.name = "Left";
         cube.GetComponent<Renderer>().material.color = Color.black;
+        cube.localScale = new Vector3(anchoBorde, alto + anchoBorde * 2F, 1F);
+        cube.transform.position = new Vector3(-tamCelda *0.5f - anchoBorde * 0.5f, tamCelda * 0.5f - alto * 0.5f, 0F);
+        cube.SetParent(goBordes);
         
         //Borde Arriba
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
-        cube.transform.position = new Vector3(4.95f, 0.62f, 0);
+        cube.name = "Top";
         cube.GetComponent<Renderer>().material.color = Color.black;
+        cube.localScale = new Vector3(ancho + anchoBorde * 2F, anchoBorde, 1F);
+        cube.transform.position = new Vector3(-tamCelda * 0.5f + ancho * 0.5f, tamCelda * 0.5f + anchoBorde * 0.5f, 0F);
+        cube.SetParent(goBordes);
 
         //Borde derecha
-        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
-        cube.transform.position = new Vector3(4.95f, -10.525f, 0);
+        cube.name = "Right";
         cube.GetComponent<Renderer>().material.color = Color.black;
+        cube.localScale = new Vector3(anchoBorde, alto + anchoBorde * 2F, 1F);
+        cube.transform.position = new Vector3(-tamCelda * 0.5f + ancho + anchoBorde * 0.5f, tamCelda * 0.5f - alto * 0.5f, 0F);
+        cube.SetParent(goBordes);
 
-        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
-        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
-        cube.transform.position = new Vector3(.5f, 11.39f, 0);
-        cube.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        
         //Borde Abajo
-        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.155f, .25f, 1);
-        cube.transform.position = new Vector3(-0.625f, -4.9525f, 0);
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.name = "Bottom";
         cube.GetComponent<Renderer>().material.color = Color.black;
+        cube.localScale = new Vector3(ancho + anchoBorde * 2F, anchoBorde, 1F);
+        cube.transform.position = new Vector3(-tamCelda * 0.5f + ancho * 0.5f, tamCelda * 0.5f - alto - anchoBorde * 0.5f, 0F);
+        cube.SetParent(goBordes);
     }
 
     private List<List<int>> ReadMap(string file)
