@@ -17,7 +17,7 @@ public class Tablero : MonoBehaviour
     public float anchoBorde = .25f;
     public AudioClip lineaClickClip;
     public AudioClip celdaFillClip;
-
+     
     AudioSource audioSource;
 
     List<List<int>> intmap;
