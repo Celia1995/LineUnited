@@ -904,6 +904,12 @@ Transform:
   m_Father: {fileID: 779167227}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19}
+--- !u!1 &287835227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3691087867874003307, guid: 90f3ebeecd368ae49aab7b4ae984d870,
+    type: 3}
+  m_PrefabInstance: {fileID: 1354708023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &295520865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2430,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 724588252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364d189becc04b64fafd2c43c2e99ef3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ea44b5135a6b96489a6a04cfae3df59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   botonJugar: {fileID: 839229070}
@@ -2434,9 +2440,11 @@ MonoBehaviour:
   botonDosJugadores: {fileID: 1532262125}
   botonTresJugadores: {fileID: 473444228}
   botonCuatroJugadores: {fileID: 300321956}
+  botonOpciones: {fileID: 943262157}
   botonVolver: {fileID: 996329132}
   botonesSalir: {fileID: 1968929404}
   botonNo: {fileID: 1184793333}
+  panelOpciones: {fileID: 287835227}
 --- !u!1 &751321171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,7 +2958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &839229071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3228,16 +3236,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 724588257}
+        m_MethodName: MostrarOpciones
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &943262160
 MonoBehaviour:
@@ -4111,7 +4119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1133939125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5506,7 +5514,7 @@ PrefabInstance:
     - target: {fileID: 3691087867874003307, guid: 90f3ebeecd368ae49aab7b4ae984d870,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3691087867874003306, guid: 90f3ebeecd368ae49aab7b4ae984d870,
         type: 3}
