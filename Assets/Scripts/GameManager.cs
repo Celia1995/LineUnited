@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 { 
     public HudManager hudManager;
+    public GameObject botonContinuar;
     bool IsGamePaused = false;
+
 
     public void ResumeGame()
     {

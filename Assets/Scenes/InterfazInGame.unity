@@ -964,6 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelPausa: {fileID: 381350303}
+  timeCounterText: {fileID: 0}
 --- !u!1 &399122282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3820,7 +3821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1767.0999, y: -29.194946}
+  m_AnchoredPosition: {x: -1767.0999, y: -29.195068}
   m_SizeDelta: {x: 305.8, y: 58.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170050033
@@ -4908,7 +4909,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1422562918}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 7ff3bacd8038b3b4a9593e67540223b0, type: 3}
+        m_MethodName: 
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1422562918
 MonoBehaviour:
   m_ObjectHideFlags: 0
