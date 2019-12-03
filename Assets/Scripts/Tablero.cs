@@ -15,6 +15,10 @@ public class Tablero : MonoBehaviour
     public float tamCelda = 1F;
     public float tamLinea = .1f;
     public float anchoBorde = .25f;
+    public AudioClip lineaClickClip;
+    public AudioClip celdaFillClip;
+
+    AudioSource audioSource;
 
     List<List<int>> intmap;
     List<List<Celda>> tablero;    
@@ -47,6 +51,7 @@ public class Tablero : MonoBehaviour
                 tempCell.name = "Celda[" + j + "," + i + "]";
                 tempCell.SetMaterial(materialsRegions[intmap[j][i]]);
                 tempCell.transform.SetParent(goCeldas);
+                tempCell.OnFilled += OnCeldaFilled;
 
                 if (i > 0)
                     tempCell.leftLine = tablero[j][i-1].rightLine;
@@ -61,6 +66,7 @@ public class Tablero : MonoBehaviour
                     linVertical.name = "LineaV[" + j + "," + i + "]";
                     linVertical.transform.rotation = Quaternion.Euler(90F, 0F, 0F);
                     linVertical.transform.SetParent(goLineas);
+                    linVertical.OnClicked += OnLineaClick;
                 }
 
                 if (j < intmap.Count - 1) 
@@ -69,6 +75,7 @@ public class Tablero : MonoBehaviour
                     tempCell.bottomLine = linHorizontal;
                     linHorizontal.name = "LineaH[" + j + "," + i + "]";
                     linHorizontal.transform.SetParent(goLineas);
+                    linHorizontal.OnClicked += OnLineaClick;
                 }
 
                 tablero[j].Add(tempCell);
@@ -110,6 +117,18 @@ public class Tablero : MonoBehaviour
         cube.localScale = new Vector3(ancho + anchoBorde * 2F, anchoBorde, 1F);
         cube.transform.position = new Vector3(-tamCelda * 0.5f + ancho * 0.5f, tamCelda * 0.5f - alto - anchoBorde * 0.5f, 0F);
         cube.SetParent(goBordes);
+
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnLineaClick()
+    {
+        audioSource.PlayOneShot(lineaClickClip);
+    }
+
+    private void OnCeldaFilled(Celda celda)
+    {
+        audioSource.PlayOneShot(celdaFillClip);
     }
 
     private List<List<int>> ReadMap(string file)
@@ -129,4 +148,6 @@ public class Tablero : MonoBehaviour
         }
         return tempMap;
     }
+    
+
 }

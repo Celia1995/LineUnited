@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class Celda : MonoBehaviour
 {
+    public Action<Celda> OnFilled;
+
     MeshRenderer rend;
     Linea _topLine, _bottomLine, _leftLine, _rightLine;
 
@@ -83,6 +84,7 @@ public class Celda : MonoBehaviour
 
         if (check) { 
             rend.material.color = new Color(1, 0, 0);
+            OnFilled?.Invoke(this);
         }
     }
 }

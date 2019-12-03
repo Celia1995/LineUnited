@@ -25,7 +25,7 @@ public class Linea : MonoBehaviour
         if (!clicked) {
             clicked = true;
             rend.material.color = new Color(1f, 0, 0);
-            OnClicked?.Invoke();
+            OnClicked?.Invoke();            
         }
     }
 
