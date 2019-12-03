@@ -960,7 +960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 381350303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea44b5135a6b96489a6a04cfae3df59, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1135f25a062a542bbcdbf99f961947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   panelPausa: {fileID: 381350303}
@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff3bacd8038b3b4a9593e67540223b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 381350307}
+  hudManager: {fileID: 381350307}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
