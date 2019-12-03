@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 18
-  productGUID: 4fec5cb76a4e0b840a668d669598e88f
+  productGUID: 5e5dbbc5be8d031469d3f34577839cf7
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: interfaz in game League of Lines
+  productName: InterfazLOLMenuPrincipal
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -591,10 +591,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: a0564bdd-cd4d-484d-accd-00a5a249d392
+  cloudProjectId: 9967efd7-70b0-4de8-80a1-05536a3ff561
   framebufferDepthMemorylessMode: 0
-  projectName: interfaz in game League of Lines
-  organizationId: josegemas1999
+  projectName: InterfazLOLMenuPrincipal
+  organizationId: srchuli
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
