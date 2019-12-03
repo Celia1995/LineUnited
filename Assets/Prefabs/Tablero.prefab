@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
+--- !u!1 &1298005563021726123
+=======
 --- !u!1 &4147025133042903360
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +12,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 1298005563021726124}
+  - component: {fileID: 1298005563021726126}
+=======
   - component: {fileID: 4147025133042903367}
   - component: {fileID: 4147025133042903365}
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   m_Layer: 0
   m_Name: Tablero
   m_TagString: Untagged
@@ -17,13 +26,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!4 &1298005563021726124
+=======
 --- !u!4 &4147025133042903367
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1298005563021726123}
+=======
   m_GameObject: {fileID: 4147025133042903360}
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2651359, y: -0.47720152, z: -0.773173}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,19 +48,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+--- !u!114 &1298005563021726126
+=======
 --- !u!114 &4147025133042903365
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1298005563021726123}
+=======
   m_GameObject: {fileID: 4147025133042903360}
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88086c24d31be4f40b9be1b1917da901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
   NombreFichero: CatFIle.txt
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   celda: {fileID: 7915714272997669073, guid: b2fb861ec7c89e24f8a39f36fcfae9fe, type: 3}
   lineaH: {fileID: 3553914784990374002, guid: f65534db32c07824792763b2db9741d5, type: 3}
   lineaV: {fileID: 3634082162658183247, guid: 6b2353fe9b721704f84cb0cf8f42cb2a, type: 3}

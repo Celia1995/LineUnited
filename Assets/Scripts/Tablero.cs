@@ -8,6 +8,10 @@ using System.Text;
 public class Tablero : MonoBehaviour
 {
     public string NombreFichero;
+<<<<<<< HEAD
+
+=======
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
     public Celda celda;
     public Linea lineaH, lineaV;
     public Material[] materialsRegions;
@@ -20,7 +24,11 @@ public class Tablero : MonoBehaviour
 
     public void Start()
     {
+<<<<<<< HEAD
+        intmap = ReadMap("./assets/SceneFile/"+ NombreFichero);
+=======
         intmap = ReadMap("./assets/SceneFile/"+NombreFichero);
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 
         Transform goCeldas = new GameObject("Celdas").transform;
         goCeldas.parent = transform;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableroNuestro : MonoBehaviour
 {
-   
+   /*
     public GameObject borde;
     public GameObject casilla;
     Vector3 posicionInicial;
@@ -15,13 +15,15 @@ public class TableroNuestro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //creacion de lineas
+
         posicionInicial = new Vector3(0.5f, -0.5f, 0);
         casillasX = 10;
         casillasY = 10;
         offset = 0.1f;
 
         GameObject bordeTemporal;
-
+       
         // MurO EnterO
         bordeTemporal = Instantiate(borde, Vector3.zero, Quaternion.identity);
         Vector3 posicionBorde=Vector3.zero;
@@ -61,5 +63,5 @@ public class TableroNuestro : MonoBehaviour
     void Update()
     {
         
-    }
+    }*/
 }

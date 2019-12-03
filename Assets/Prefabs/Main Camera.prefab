@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
+--- !u!1 &259668606472434744
+=======
 --- !u!1 &8000133910058993409
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +12,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 259668606472434884}
+  - component: {fileID: 259668606472434747}
+  - component: {fileID: 259668606472434745}
+=======
   - component: {fileID: 8000133910058993661}
   - component: {fileID: 8000133910058993410}
   - component: {fileID: 8000133910058993408}
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18,13 +28,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!4 &259668606472434884
+=======
 --- !u!4 &8000133910058993661
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 259668606472434744}
+=======
   m_GameObject: {fileID: 8000133910058993409}
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.62, y: -4.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +50,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+--- !u!20 &259668606472434747
+=======
 --- !u!20 &8000133910058993410
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 259668606472434744}
+=======
   m_GameObject: {fileID: 8000133910058993409}
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
@@ -74,11 +100,19 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+<<<<<<< HEAD
+--- !u!81 &259668606472434745
+=======
 --- !u!81 &8000133910058993408
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 259668606472434744}
+=======
   m_GameObject: {fileID: 8000133910058993409}
+>>>>>>> f753d3552ff190d900e4e62a6f9145b8b7ec18b0
   m_Enabled: 1
