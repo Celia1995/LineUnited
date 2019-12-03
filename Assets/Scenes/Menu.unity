@@ -2130,16 +2130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1135f25a062a542bbcdbf99f961947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botonJugar: {fileID: 839229070}
-  botonTitulo: {fileID: 1133939124}
-  botonMenuPrincipal: {fileID: 1169816082}
-  segundaPantalla: {fileID: 1963743731}
-  botonDosJugadores: {fileID: 1532262125}
-  botonTresJugadores: {fileID: 473444228}
-  botonCuatroJugadores: {fileID: 300321956}
-  botonVolver: {fileID: 996329132}
-  botonesSalir: {fileID: 1968929404}
-  botonNo: {fileID: 1184793333}
+  panelPausa: {fileID: 0}
 --- !u!1 &751321171
 GameObject:
   m_ObjectHideFlags: 0
