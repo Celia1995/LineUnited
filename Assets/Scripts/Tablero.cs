@@ -5,10 +5,10 @@ using System.IO;
 using System;
 using System.Text;
 
+
 public class Tablero : MonoBehaviour
 {
     public string NombreFichero;
-
     public Celda celda;
     public Linea lineaH, lineaV;
     public Material[] materialsRegions;
@@ -21,8 +21,7 @@ public class Tablero : MonoBehaviour
 
     public void Start()
     {
-
-        intmap = ReadMap("./assets/SceneFile/"+ NombreFichero);
+        intmap = ReadMap("./assets/SceneFile/"+NombreFichero);
 
         Transform goCeldas = new GameObject("Celdas").transform;
         goCeldas.parent = transform;
@@ -48,13 +47,13 @@ public class Tablero : MonoBehaviour
                     tempCell.leftLine = tablero[j][i-1].rightLine;
                 if (j > 0)
                     tempCell.topLine = tablero[j-1][i].bottomLine;
-                if (i< (intmap[j].Count))
+                if (i< (intmap[j].Count-1))
                 {
                     Linea linVertical = Instantiate(lineaV, tempCell.transform.position + new Vector3(0.55f, 0, 0), Quaternion.identity);
                     tempCell.rightLine = linVertical;
                     linVertical.name = "LineaV[" + i + "," + j + "]";
                 }
-                if (j < (intmap.Count))
+                if (j < (intmap.Count-1))
                 {
                     Linea linHorizontal = Instantiate(lineaH, tempCell.transform.position + new Vector3(0, -0.55f, 0), Quaternion.identity);
                     tempCell.bottomLine = linHorizontal;
@@ -65,19 +64,33 @@ public class Tablero : MonoBehaviour
         }
 
         // Create board borders
+        //Borde izquierdo
         Transform cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
-        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
+        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.155f, .25f, 1);
+        cube.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+        cube.transform.position = new Vector3(10.52f, -4.95f, 0);
+        cube.GetComponent<Renderer>().material.color = Color.black;
+        
+        //Borde Arriba
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
         cube.transform.position = new Vector3(4.95f, 0.62f, 0);
+        cube.GetComponent<Renderer>().material.color = Color.black;
 
+        //Borde derecha
         cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
         cube.transform.position = new Vector3(4.95f, -10.525f, 0);
+        cube.GetComponent<Renderer>().material.color = Color.black;
 
         cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
-        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform; 
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.transform.position = new Vector3(.5f, 11.39f, 0);
+        cube.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         
-        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.1f, .25f, 1);
+        //Borde Abajo
+        cube.localScale = new Vector3(intmap[0].Count + (intmap[0].Count - 1) * 0.155f, .25f, 1);
+        cube.transform.position = new Vector3(-0.625f, -4.9525f, 0);
+        cube.GetComponent<Renderer>().material.color = Color.black;
     }
 
     private List<List<int>> ReadMap(string file)
