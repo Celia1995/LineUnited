@@ -5,7 +5,6 @@ using System.IO;
 using System;
 using System.Text;
 
-
 public class Tablero : MonoBehaviour
 {
     public string NombreFichero;
@@ -58,29 +57,13 @@ public class Tablero : MonoBehaviour
                 tempCell.transform.SetParent(goCeldas);
                 tempCell.OnFilled += OnCeldaFilled;
 
-                if (i > 0)
-                {
-                    if (tablero[j][i - 1].rightLine != null)
-                    {
-                        if (intmap[j][i] > blackCells)
-                            tempCell.leftLine = tablero[j][i - 1].rightLine;
-                        else
-                            Destroy(tablero[j][i - 1].rightLine.gameObject);
-                    }
-                }
+                if (i > 0 && tablero[j][i - 1].rightLine)
+                    tempCell.leftLine = tablero[j][i - 1].rightLine;
 
-                if (j > 0)
-                {
-                    if (tablero[j - 1][i].bottomLine != null)
-                    {
-                        if (intmap[j][i] > blackCells)
-                            tempCell.topLine = tablero[j - 1][i].bottomLine;
-                        else
-                            Destroy(tablero[j - 1][i].bottomLine.gameObject);
-                    }
-                }
+                if (j > 0 && tablero[j - 1][i].bottomLine)
+                    tempCell.topLine = tablero[j - 1][i].bottomLine;
 
-                if (i < intmap[j].Count - 1 && intmap[j][i] > blackCells) 
+                if (i < intmap[j].Count - 1 && intmap[j][i] > blackCells && intmap[j][i+1] > blackCells) 
                 {
                     Linea linVertical = Instantiate(lineaV, tempCell.transform.position + Vector3.right * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.rightLine = linVertical;
@@ -90,7 +73,7 @@ public class Tablero : MonoBehaviour
                     linVertical.OnClicked += OnLineaClick;
                 }
 
-                if (j < intmap.Count - 1 && intmap[j][i] > blackCells) 
+                if (j < intmap.Count - 1 && intmap[j][i] > blackCells && intmap[j+1][i] > blackCells) 
                 {
                     Linea linHorizontal = Instantiate(lineaH, tempCell.transform.position + Vector3.down * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.bottomLine = linHorizontal;
