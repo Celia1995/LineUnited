@@ -209,12 +209,15 @@ public class Tablero : MonoBehaviour
                 //Crear particula en ultimaCelda.trasform.position
                 //Crear particula en celda.transform.position
             }
+            ultimaCelda = celda;
         }
     }
 
     private void SiguienteTurno()
     {
-        Turno = (Turno + 1) % jugadores.Length;
+        if (ultimaCelda == null)
+            Turno = (Turno + 1) % jugadores.Length;
+
         ultimaCelda = null;
     }
 
