@@ -355,6 +355,16 @@ PrefabInstance:
       propertyPath: lineaClick
       value: 
       objectReference: {fileID: 8300000, guid: 50d2e37eca75d8f478e2092b611cab8e, type: 3}
+    - target: {fileID: 4147025133042903365, guid: 93d911b99252ecf4ebca0d14136bfed6,
+        type: 3}
+      propertyPath: materialsRegions.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e6200d82ac2cf174d93038ca575c6382, type: 2}
+    - target: {fileID: 4147025133042903365, guid: 93d911b99252ecf4ebca0d14136bfed6,
+        type: 3}
+      propertyPath: materialsRegions.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6de97c1f5cc918488acad584f6c6a7b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d911b99252ecf4ebca0d14136bfed6, type: 3}
 --- !u!1001 &8000133909753511805
@@ -423,6 +433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000133910058993410, guid: e14c173a154ce00439304da79fae5b77,
+        type: 3}
+      propertyPath: orthographic size
+      value: 13.003054
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e14c173a154ce00439304da79fae5b77, type: 3}

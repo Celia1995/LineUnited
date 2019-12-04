@@ -15,6 +15,7 @@ public class Tablero : MonoBehaviour
     public float tamCelda = 1F;
     public float tamLinea = .1f;
     public float anchoBorde = .25f;
+    public int blackCells = 0;
     public AudioClip lineaClickClip;
     public AudioClip celdaFillClip;
      
@@ -58,12 +59,28 @@ public class Tablero : MonoBehaviour
                 tempCell.OnFilled += OnCeldaFilled;
 
                 if (i > 0)
-                    tempCell.leftLine = tablero[j][i-1].rightLine;
+                {
+                    if (tablero[j][i - 1].rightLine != null)
+                    {
+                        if (intmap[j][i] > blackCells)
+                            tempCell.leftLine = tablero[j][i - 1].rightLine;
+                        else
+                            Destroy(tablero[j][i - 1].rightLine.gameObject);
+                    }
+                }
 
                 if (j > 0)
-                    tempCell.topLine = tablero[j-1][i].bottomLine;
+                {
+                    if (tablero[j - 1][i].bottomLine != null)
+                    {
+                        if (intmap[j][i] > blackCells)
+                            tempCell.topLine = tablero[j - 1][i].bottomLine;
+                        else
+                            Destroy(tablero[j - 1][i].bottomLine.gameObject);
+                    }
+                }
 
-                if (i < intmap[j].Count - 1) 
+                if (i < intmap[j].Count - 1 && intmap[j][i] > blackCells) 
                 {
                     Linea linVertical = Instantiate(lineaV, tempCell.transform.position + Vector3.right * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.rightLine = linVertical;
@@ -73,7 +90,7 @@ public class Tablero : MonoBehaviour
                     linVertical.OnClicked += OnLineaClick;
                 }
 
-                if (j < intmap.Count - 1) 
+                if (j < intmap.Count - 1 && intmap[j][i] > blackCells) 
                 {
                     Linea linHorizontal = Instantiate(lineaH, tempCell.transform.position + Vector3.down * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.bottomLine = linHorizontal;
