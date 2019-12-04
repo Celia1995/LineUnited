@@ -19,16 +19,29 @@ public class Tablero : MonoBehaviour
     public AudioClip celdaFillClip;
     public Color colorFondo = new Color(0.2f, 0.2f, 0.2f);
     public ParticleSystem particulas;
+    public Color[] jugadores = new Color[] { Color.red, Color.green, Color.blue, Color.yellow };
 
     AudioSource audioSource;
 
     List<List<int>> intmap;
-    List<List<Celda>> tablero;    
+    List<List<Celda>> tablero;
 
     public Vector2 Tamanyo { get; private set; }
 
+    public int Turno { get; private set; }
+
+    public int[] Puntuaciones { get; private set; }
+
+    private int celdasActivas = 0;
+
+    private Celda ultimaCelda;
+
+    public bool JuegoTerminado { get; private set; }
+
     public void Start()
     {
+        Puntuaciones = new int[jugadores.Length];
+
         transform.position = Vector3.zero;  
 
         intmap = ReadMap("./assets/SceneFile/"+NombreFichero);
@@ -72,6 +85,7 @@ public class Tablero : MonoBehaviour
                     linVertical.name = "LineaV[" + j + "," + i + "]";
                     linVertical.transform.rotation = Quaternion.Euler(90F, 0F, 0F);
                     linVertical.transform.SetParent(goLineas);
+                    linVertical.OnOver += OnLineaOver;
                     linVertical.OnClicked += OnLineaClick;
                 }
 
@@ -81,9 +95,13 @@ public class Tablero : MonoBehaviour
                     tempCell.bottomLine = linHorizontal;
                     linHorizontal.name = "LineaH[" + j + "," + i + "]";
                     linHorizontal.transform.SetParent(goLineas);
+                    linHorizontal.OnOver += OnLineaOver;
                     linHorizontal.OnClicked += OnLineaClick;
                 }
 
+                if (intmap[j][i] > blackCells)
+                    celdasActivas++;
+                
                 tablero[j].Add(tempCell);
             }
         }        
@@ -135,14 +153,75 @@ public class Tablero : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnLineaClick()
+    private void OnLineaOver(Linea linea)
     {
-        audioSource.PlayOneShot(lineaClickClip);
+        if (!JuegoTerminado)
+            linea.Color = jugadores[Turno];
+    }
+
+    private void OnLineaClick(Linea linea)
+    {
+        if (!JuegoTerminado)
+        {
+            linea.Color = jugadores[Turno];
+            audioSource.PlayOneShot(lineaClickClip);
+            StartCoroutine(RevisarTurno());
+        }
+    }
+
+    private IEnumerator RevisarTurno()
+    {
+        yield return new WaitForEndOfFrame();
+
+        int ganador = 0;
+        for (int i = 1; i < Puntuaciones.Length; i++)
+        {
+            if (Puntuaciones[i] > Puntuaciones[ganador])
+                ganador = i;
+        }
+
+        bool rival = false;
+        for (int i = 0; i < Puntuaciones.Length; i++)
+        {
+            if (i != ganador && Puntuaciones[i] + celdasActivas > Puntuaciones[ganador])
+            {
+                rival = true;
+                break;
+            }
+        }
+
+        if (!rival)
+            GameOver(ganador, jugadores[ganador]);
+        else
+            SiguienteTurno();
     }
 
     private void OnCeldaFilled(Celda celda)
     {
-        audioSource.PlayOneShot(celdaFillClip);
+        if (!JuegoTerminado)
+        {
+            Puntuaciones[Turno]++;
+            celdasActivas--;
+            celda.Color = jugadores[Turno];
+            audioSource.PlayOneShot(celdaFillClip);
+            if (ultimaCelda != null)
+            {
+                //Crear particula en ultimaCelda.trasform.position
+                //Crear particula en celda.transform.position
+            }
+        }
+    }
+
+    private void SiguienteTurno()
+    {
+        Turno = (Turno + 1) % jugadores.Length;
+        ultimaCelda = null;
+    }
+
+    private void GameOver(int jugador, Color color)
+    {
+        JuegoTerminado = true;
+        print("Jugador " + (jugador + 1).ToString() + " ha ganado.");
     }
 
     private List<List<int>> ReadMap(string file)

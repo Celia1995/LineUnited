@@ -5,34 +5,45 @@ using System;
 
 public class Linea : MonoBehaviour
 {
-    public Action OnClicked;
-    MeshRenderer rend;
-    public bool clicked = false;
+    public Action<Linea> OnOver;
+    public Action<Linea> OnClicked;
+
+    public Color Color
+    {
+        get { return rend.material.color; }
+        set { rend.material.color = value; }
+    }
+
+    public bool Clicked { get; private set; }
+
+    private Renderer rend;
+    private Color colorNativo;
 
     private void Awake()
     {
-        rend = GetComponent<MeshRenderer>();
-        rend.material.color = Color.gray;
+        rend = GetComponent<Renderer>();
+        colorNativo = Color;
     }
 
     private void OnMouseOver()
     {
-        if (!clicked)
-            rend.material.color = new Color(0.5f, 0, 0);
+        if (!Clicked)
+            OnOver?.Invoke(this);
     }
 
     private void OnMouseDown()
     {
-        if (!clicked) {
-            clicked = true;
-            rend.material.color = new Color(1f, 0, 0);
-            OnClicked?.Invoke();            
+        if (!Clicked)
+        {
+            Clicked = true;
+            OnClicked?.Invoke(this);            
         }
     }
 
-    private void OnMouseExit() {
-        if (!clicked)
-            rend.material.color = new Color(1, 1,1);
+    private void OnMouseExit()
+    {
+        if (!Clicked)
+            rend.material.color = colorNativo;
     }
 
     //public static bool operator ==(Linea obj1, Linea obj2)

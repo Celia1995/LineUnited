@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class Celda : MonoBehaviour
 {
+    public Color Color
+    {
+        get { return rend.material.color; }
+        set { rend.material.color = value; }
+    }
+
     public Action<Celda> OnFilled;
 
     MeshRenderer rend;
@@ -68,25 +74,23 @@ public class Celda : MonoBehaviour
         rend.material = material;
     }
 
-    public void CheckCubeSides()
+    public void CheckCubeSides(Linea linea)
     {
         // Poner el color del player activo
         // Arreglar esta comprobacion con el override de == de linea....
         bool check = false;
-        check = topLine == null ? true : topLine.clicked;
+        check = topLine == null ? true : topLine.Clicked;
         Debug.Log("Top: " + check);
-        check = check && (bottomLine == null ? true : bottomLine.clicked);
+        check = check && (bottomLine == null ? true : bottomLine.Clicked);
         Debug.Log("Bottom: " + check);
-        check = check && (leftLine == null ? true : leftLine.clicked);
+        check = check && (leftLine == null ? true : leftLine.Clicked);
         Debug.Log("Left: " + check);
-        check = check && (rightLine == null ? true : rightLine.clicked);
+        check = check && (rightLine == null ? true : rightLine.Clicked);
         Debug.Log("Right: " + check);
 
 
         if (check) { 
-            rend.material.color = new Color(1, 0, 0);
             OnFilled?.Invoke(this);
-            
         }
     }
 }
