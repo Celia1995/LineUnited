@@ -20,9 +20,19 @@ public class VolumenValueChange : MonoBehaviour
         audioSrc.volume = musicVolume;
     }
 
-    public void SetVolume(float vol)
+    public void SetMusicVolume(float vol)
     {
         musicVolume = vol;
+    }
+
+    public void SetVolume(float vol)
+    {
+
+    }
+
+    public void SetMasterVolume(float vol)
+    {
+
     }
 
     public void MostrarSonidoClick(bool value)
