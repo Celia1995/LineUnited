@@ -18,7 +18,8 @@ public class Tablero : MonoBehaviour
     public AudioClip lineaClickClip;
     public AudioClip celdaFillClip;
     public Color colorFondo = new Color(0.2f, 0.2f, 0.2f);
-     
+    public ParticleSystem particulas;
+
     AudioSource audioSource;
 
     List<List<int>> intmap;

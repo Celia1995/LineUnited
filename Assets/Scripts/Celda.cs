@@ -7,6 +7,7 @@ public class Celda : MonoBehaviour
 
     MeshRenderer rend;
     Linea _topLine, _bottomLine, _leftLine, _rightLine;
+    
 
     public Linea topLine
     {
@@ -85,6 +86,7 @@ public class Celda : MonoBehaviour
         if (check) { 
             rend.material.color = new Color(1, 0, 0);
             OnFilled?.Invoke(this);
+            
         }
     }
 }
