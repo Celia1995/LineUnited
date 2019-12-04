@@ -12,6 +12,7 @@ public class Linea : MonoBehaviour
     private void Awake()
     {
         rend = GetComponent<MeshRenderer>();
+        rend.material.color = Color.gray;
     }
 
     private void OnMouseOver()
