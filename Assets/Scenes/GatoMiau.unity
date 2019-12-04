@@ -375,6 +375,21 @@ PrefabInstance:
       propertyPath: materialsRegions.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f6de97c1f5cc918488acad584f6c6a7b, type: 2}
+    - target: {fileID: 4147025133042903365, guid: 93d911b99252ecf4ebca0d14136bfed6,
+        type: 3}
+      propertyPath: colorFondo.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147025133042903365, guid: 93d911b99252ecf4ebca0d14136bfed6,
+        type: 3}
+      propertyPath: colorFondo.g
+      value: 0.56256676
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147025133042903365, guid: 93d911b99252ecf4ebca0d14136bfed6,
+        type: 3}
+      propertyPath: colorFondo.b
+      value: 0.89852214
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d911b99252ecf4ebca0d14136bfed6, type: 3}
 --- !u!1001 &8000133909753511805
