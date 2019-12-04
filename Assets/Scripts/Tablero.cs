@@ -17,6 +17,7 @@ public class Tablero : MonoBehaviour
     public int blackCells = 0;
     public AudioClip lineaClickClip;
     public AudioClip celdaFillClip;
+    public Color colorFondo = new Color(0.2f, 0.2f, 0.2f);
      
     AudioSource audioSource;
 
@@ -123,6 +124,12 @@ public class Tablero : MonoBehaviour
         cube.localScale = new Vector3(ancho + anchoBorde * 2F, anchoBorde, 1F);
         cube.transform.position = new Vector3(-tamCelda * 0.5f + ancho * 0.5f, tamCelda * 0.5f - alto - anchoBorde * 0.5f, 0F);
         cube.SetParent(goBordes);
+
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.name = "Background";
+        cube.GetComponent<Renderer>().material.color = colorFondo;
+        cube.localScale = new Vector3(ancho, alto, 1F);
+        cube.transform.position = new Vector3(-tamCelda * 0.5f +ancho * 0.5f, tamCelda * 0.5f -alto * 0.5f, 1F);
 
         audioSource = GetComponent<AudioSource>();
     }
