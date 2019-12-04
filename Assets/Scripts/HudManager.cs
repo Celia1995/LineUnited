@@ -24,9 +24,5 @@ public class HudManager : MonoBehaviour
         timeCounterText.text = newTime.ToString("f0");
     }
 
-    public void MostrarBotonContinuar(bool value)
-    {
-        SetActivePausePanel(!value);
-        botonContinuar.SetActive(value);
-    }
+    
 }
