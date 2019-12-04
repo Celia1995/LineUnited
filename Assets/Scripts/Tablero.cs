@@ -5,7 +5,6 @@ using System.IO;
 using System;
 using System.Text;
 
-
 public class Tablero : MonoBehaviour
 {
     public string NombreFichero;
@@ -15,8 +14,10 @@ public class Tablero : MonoBehaviour
     public float tamCelda = 1F;
     public float tamLinea = .1f;
     public float anchoBorde = .25f;
+    public int blackCells = 0;
     public AudioClip lineaClickClip;
     public AudioClip celdaFillClip;
+    public Color colorFondo = new Color(0.2f, 0.2f, 0.2f);
      
     AudioSource audioSource;
 
@@ -57,13 +58,13 @@ public class Tablero : MonoBehaviour
                 tempCell.transform.SetParent(goCeldas);
                 tempCell.OnFilled += OnCeldaFilled;
 
-                if (i > 0)
-                    tempCell.leftLine = tablero[j][i-1].rightLine;
+                if (i > 0 && tablero[j][i - 1].rightLine)
+                    tempCell.leftLine = tablero[j][i - 1].rightLine;
 
-                if (j > 0)
-                    tempCell.topLine = tablero[j-1][i].bottomLine;
+                if (j > 0 && tablero[j - 1][i].bottomLine)
+                    tempCell.topLine = tablero[j - 1][i].bottomLine;
 
-                if (i < intmap[j].Count - 1) 
+                if (i < intmap[j].Count - 1 && intmap[j][i] > blackCells && intmap[j][i+1] > blackCells) 
                 {
                     Linea linVertical = Instantiate(lineaV, tempCell.transform.position + Vector3.right * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.rightLine = linVertical;
@@ -73,7 +74,7 @@ public class Tablero : MonoBehaviour
                     linVertical.OnClicked += OnLineaClick;
                 }
 
-                if (j < intmap.Count - 1) 
+                if (j < intmap.Count - 1 && intmap[j][i] > blackCells && intmap[j+1][i] > blackCells) 
                 {
                     Linea linHorizontal = Instantiate(lineaH, tempCell.transform.position + Vector3.down * (tamCelda * 0.5f + tamLinea * 0.5f), Quaternion.identity);
                     tempCell.bottomLine = linHorizontal;
@@ -123,6 +124,12 @@ public class Tablero : MonoBehaviour
         cube.localScale = new Vector3(ancho + anchoBorde * 2F, anchoBorde, 1F);
         cube.transform.position = new Vector3(-tamCelda * 0.5f + ancho * 0.5f, tamCelda * 0.5f - alto - anchoBorde * 0.5f, 0F);
         cube.SetParent(goBordes);
+
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+        cube.name = "Background";
+        cube.GetComponent<Renderer>().material.color = colorFondo;
+        cube.localScale = new Vector3(ancho, alto, 1F);
+        cube.transform.position = new Vector3(-tamCelda * 0.5f +ancho * 0.5f, tamCelda * 0.5f -alto * 0.5f, 1F);
 
         audioSource = GetComponent<AudioSource>();
     }

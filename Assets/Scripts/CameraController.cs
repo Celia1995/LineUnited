@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [HideInInspector]
+    [SerializeField]
     private Tablero _tablero;
+    [Range(0F, 2F)]
+    public float border = 0F;
 
     private Camera camera;
 
@@ -31,7 +33,7 @@ public class CameraController : MonoBehaviour
 
         float o = Screen.height > Screen.width ? (float)Screen.height / Screen.width : 1F;
 
-        camera.orthographicSize = (board.y + _tablero.anchoBorde * 2F) * 0.5f * o;
+        camera.orthographicSize = (board.y + _tablero.anchoBorde * 2F + border * 2F) * 0.5f * o;
 
         Vector3 center = new Vector3(-_tablero.tamCelda * 0.5f + board.x * 0.5f, _tablero.tamCelda * 0.5f - board.y * 0.5f, -1F);
 
