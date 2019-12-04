@@ -23,8 +23,12 @@ public class Tablero : MonoBehaviour
     List<List<int>> intmap;
     List<List<Celda>> tablero;    
 
+    public Vector2 Tamanyo { get; private set; }
+
     public void Start()
     {
+        transform.position = Vector3.zero;  
+
         intmap = ReadMap("./assets/SceneFile/"+NombreFichero);
 
         int filas = intmap.Count;
@@ -84,6 +88,8 @@ public class Tablero : MonoBehaviour
 
         float ancho = columnas * tamCelda + (columnas - 1F) * tamLinea;
         float alto = filas * tamCelda + (filas - 1) * tamLinea;
+
+        Tamanyo = new Vector2(ancho, alto);
 
         // Create board borders
         //Borde izquierdo
@@ -148,6 +154,4 @@ public class Tablero : MonoBehaviour
         }
         return tempMap;
     }
-    
-
 }
