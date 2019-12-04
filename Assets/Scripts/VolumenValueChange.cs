@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class VolumenValueChange : MonoBehaviour
 {
-    public GameObject sonidoClic;
-
-    private AudioSource audioSrc;
+    private AudioSource musicSource;
+    private AudioSource soundSource;
 
     private float musicVolume = 0.5f;
+    private float sonidoVolume = 1f;
+    private float masterVolume = 1f;
 
     void Start()
     {
-        audioSrc = GetComponent<AudioSource>();
+        AudioSource[] sources = GetComponents<AudioSource>();
+        musicSource = sources[0];
+        soundSource = sources[1];
     }
 
     void Update()
     {
-        audioSrc.volume = musicVolume;
+        musicSource.volume = musicVolume * masterVolume;
+        soundSource.volume = sonidoVolume * masterVolume;
     }
 
     public void SetMusicVolume(float vol)
@@ -27,16 +31,20 @@ public class VolumenValueChange : MonoBehaviour
 
     public void SetVolume(float vol)
     {
-
+        sonidoVolume = vol;
     }
 
     public void SetMasterVolume(float vol)
     {
-
+        masterVolume = vol;
     }
 
     public void MostrarSonidoClick(bool value)
     {
-        Instantiate(sonidoClic);
+    }
+
+    public void ReproducirSonido(AudioClip clip)
+    {
+        soundSource.PlayOneShot(clip);
     }
 }
