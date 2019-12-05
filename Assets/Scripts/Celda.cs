@@ -80,13 +80,13 @@ public class Celda : MonoBehaviour
         // Arreglar esta comprobacion con el override de == de linea....
         bool check = false;
         check = topLine == null ? true : topLine.Clicked;
-        Debug.Log("Top: " + check);
+        //Debug.Log("Top: " + check);
         check = check && (bottomLine == null ? true : bottomLine.Clicked);
-        Debug.Log("Bottom: " + check);
+        //Debug.Log("Bottom: " + check);
         check = check && (leftLine == null ? true : leftLine.Clicked);
-        Debug.Log("Left: " + check);
+        //Debug.Log("Left: " + check);
         check = check && (rightLine == null ? true : rightLine.Clicked);
-        Debug.Log("Right: " + check);
+        //Debug.Log("Right: " + check);
 
 
         if (check) { 

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System;
 using System.Text;
+using TMPro;
 
 public class Tablero : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Tablero : MonoBehaviour
     public ParticleSystem particulas;
     public int jugadoresActivos;
     public Color[] jugadores = new Color[] { Color.red, Color.green, Color.blue, Color.yellow };
+    public TMP_Text[] nombresJugadores;
 
     AudioSource audioSource;
 
@@ -39,14 +41,18 @@ public class Tablero : MonoBehaviour
 
     public bool JuegoTerminado { get; private set; }
 
-    public void Start()
+    public GameManager gameManager;
+    public HudManager hud;
+
+    public void Awake()
     {
+        gameManager.TiempoTurnoTerminado += SiguienteTurno;
         if (jugadoresActivos < 2)
             jugadoresActivos = 2;
-        if (jugadoresActivos > 3)
-            jugadoresActivos = 3;
+        if (jugadoresActivos > 4)
+            jugadoresActivos = 4;
 
-        Puntuaciones = new int[jugadores.Length];
+        Puntuaciones = new int[jugadoresActivos];
 
         transform.position = Vector3.zero;  
 
@@ -157,17 +163,18 @@ public class Tablero : MonoBehaviour
         cube.transform.position = new Vector3(-tamCelda * 0.5f +ancho * 0.5f, tamCelda * 0.5f -alto * 0.5f, 1F);
 
         audioSource = GetComponent<AudioSource>();
+        nombresJugadores[0].color = jugadores[Turno];
     }
 
     private void OnLineaOver(Linea linea)
     {
-        if (!JuegoTerminado)
+        if (!JuegoTerminado && gameManager.gameStarted)
             linea.Color = jugadores[Turno];
     }
 
     private void OnLineaClick(Linea linea)
     {
-        if (!JuegoTerminado)
+        if (!JuegoTerminado && gameManager.gameStarted)
         {
             linea.Color = jugadores[Turno];
             audioSource.PlayOneShot(lineaClickClip);
@@ -210,10 +217,14 @@ public class Tablero : MonoBehaviour
             celdasActivas--;
             celda.Color = jugadores[Turno];
             audioSource.PlayOneShot(celdaFillClip);
+            hud.puntuaciones[Turno].text = Puntuaciones[Turno].ToString();
+            gameManager.SiguienteTurno();
             if (ultimaCelda != null)
             {
+                ParticleSystem tempParticle = Instantiate(particulas, ultimaCelda.transform.position, Quaternion.identity);
+                tempParticle.gameObject.SetActive(true);
                 //Crear particula en ultimaCelda.trasform.position
-                
+
                 //Crear particula en celda.transform.position
             }
             ultimaCelda = celda;
@@ -222,8 +233,12 @@ public class Tablero : MonoBehaviour
 
     private void SiguienteTurno()
     {
-        if (ultimaCelda == null)
-            Turno = (Turno + 1) % jugadores.Length;
+        if (ultimaCelda == null) {
+            nombresJugadores[Turno].color = Color.white;
+            Turno = (Turno + 1) % jugadoresActivos;
+            nombresJugadores[Turno].color = jugadores[Turno];
+            gameManager.SiguienteTurno();
+        }
 
         ultimaCelda = null;
     }

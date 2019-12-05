@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class HudManager : MonoBehaviour
 {
@@ -16,9 +17,29 @@ public class HudManager : MonoBehaviour
     public Image[] avatares;
     public TMP_Text textoVictoria;
 
+    public Animator anim;
+    public TextMeshProUGUI textoTimer;
+    int timer = 3;
+    public Action OnCuentaAtrasTerminada; 
+
     private void Start()
     {
-        SetActivePausePanel(false);
+
+    }
+
+    public void CuentaAtras()
+    {
+        timer--;
+        if (timer > 0)
+            textoTimer.text = timer.ToString();
+        else { 
+            textoTimer.text = "GO!";
+        }
+    }
+
+    public void TerminarCuentaAtras()
+    {
+        OnCuentaAtrasTerminada?.Invoke();
     }
 
     public void ConfigurarAvatares(Color[] jugadores)
