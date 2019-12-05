@@ -7,11 +7,12 @@ using System;
 public class GameManager : MonoBehaviour
 { 
     public HudManager hudManager;
-    bool IsGamePaused = false;
-    public bool gameStarted=false;
+    public static bool IsGamePaused = false;
+    public static bool IsGamestarted = false;
 
     public float tiempoTurno = 5f;
     float contadorTiempo;
+    public Tablero tablero;
 
     public Action TiempoTurnoTerminado;
 
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void ExitMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+    }
+
     public IEnumerator ContarTurno()
     {
         while (contadorTiempo > 0) { 
@@ -40,6 +46,7 @@ public class GameManager : MonoBehaviour
         if (contadorTiempo <= 0)
         {
             SiguienteTurno();
+            tablero.SetPerderTurnoJugadorActivo(true);
             TiempoTurnoTerminado?.Invoke();
         }
     }
@@ -54,20 +61,41 @@ public class GameManager : MonoBehaviour
 
     public void EmpezarJuego()
     {
-        gameStarted = true;
+        IsGamestarted = true;
         StartCoroutine(ContarTurno());
     }
 
     public void Awake()
     {
+        Time.timeScale = 1f;
+        IsGamePaused = false;
+        IsGamestarted = false;
         hudManager.OnCuentaAtrasTerminada += EmpezarJuego;
+        hudManager.OnJuegoTerminado += PararTodo;
+        hudManager.OnResumeGameButton += ResumeGame;
+        hudManager.OnMainMenuButton += ExitMainMenu;
+        hudManager.OnGoBackToPlay += ResumeGame;
+    }
+
+    public void PararTodo()
+    {
+        StopAllCoroutines();
     }
 
     public void Start()
     {
         contadorTiempo = tiempoTurno;
-        hudManager.anim.Play("AnimacionCuentaAtras");
-        
+        hudManager.anim.Play("AnimacionCuentaAtras");   
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        hudManager.OnCuentaAtrasTerminada -= EmpezarJuego;
+        hudManager.OnJuegoTerminado -= PararTodo;
+        hudManager.OnResumeGameButton -= ResumeGame;
+        hudManager.OnMainMenuButton -= ExitMainMenu;
+        hudManager.OnGoBackToPlay -= ResumeGame;
     }
 
     void Update()
@@ -76,7 +104,7 @@ public class GameManager : MonoBehaviour
         {
             if (IsGamePaused)
             {
-                ResumeGame();
+                hudManager.GoBack();
             }
             else
             {

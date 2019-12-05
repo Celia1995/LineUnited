@@ -22,7 +22,9 @@ public class Tablero : MonoBehaviour
     public ParticleSystem particulas;
     public int jugadoresActivos;
     public Color[] jugadores = new Color[] { Color.red, Color.green, Color.blue, Color.yellow };
+    public bool[] perderTurnoJugador = new bool[] {false,false,false,false};
     public TMP_Text[] nombresJugadores;
+    public GameObject[] panelesJugadores;
 
     AudioSource audioSource;
 
@@ -47,10 +49,16 @@ public class Tablero : MonoBehaviour
     public void Awake()
     {
         gameManager.TiempoTurnoTerminado += SiguienteTurno;
+        jugadoresActivos = PlayerPrefs.GetInt("Jugadores");
         if (jugadoresActivos < 2)
             jugadoresActivos = 2;
         if (jugadoresActivos > 4)
             jugadoresActivos = 4;
+
+        for (int i=2; i < jugadoresActivos; i++)
+        {
+            panelesJugadores[i].SetActive(true);
+        }
 
         Puntuaciones = new int[jugadoresActivos];
 
@@ -168,13 +176,13 @@ public class Tablero : MonoBehaviour
 
     private void OnLineaOver(Linea linea)
     {
-        if (!JuegoTerminado && gameManager.gameStarted)
+        if (!JuegoTerminado && GameManager.IsGamestarted && Time.timeScale > 0f)
             linea.Color = jugadores[Turno];
     }
 
     private void OnLineaClick(Linea linea)
     {
-        if (!JuegoTerminado && gameManager.gameStarted)
+        if (!JuegoTerminado && GameManager.IsGamestarted && Time.timeScale > 0f)
         {
             linea.Color = jugadores[Turno];
             audioSource.PlayOneShot(lineaClickClip);
@@ -231,13 +239,27 @@ public class Tablero : MonoBehaviour
         }
     }
 
+    public void SetPerderTurnoJugadorActivo(bool value)
+    {
+        perderTurnoJugador[Turno] = value;
+    }
+
     private void SiguienteTurno()
     {
         if (ultimaCelda == null) {
+            
             nombresJugadores[Turno].color = Color.white;
             Turno = (Turno + 1) % jugadoresActivos;
-            nombresJugadores[Turno].color = jugadores[Turno];
-            gameManager.SiguienteTurno();
+            if (perderTurnoJugador[Turno] == false)
+            {
+                nombresJugadores[Turno].color = jugadores[Turno];
+                gameManager.SiguienteTurno();
+            }
+            else
+            {
+                perderTurnoJugador[Turno] = false;
+                SiguienteTurno();
+            }
         }
 
         ultimaCelda = null;
@@ -247,6 +269,7 @@ public class Tablero : MonoBehaviour
     {
         JuegoTerminado = true;
         print("Jugador " + (jugador + 1).ToString() + " ha ganado.");
+        hud.TextoVictoria(jugador + 1, jugadores[jugador]);
     }
 
     private List<List<int>> ReadMap(string file)

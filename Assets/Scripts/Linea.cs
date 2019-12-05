@@ -27,13 +27,13 @@ public class Linea : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (!Clicked)
+        if (!Clicked && GameManager.IsGamestarted && !GameManager.IsGamePaused)
             OnOver?.Invoke(this);
     }
 
     private void OnMouseDown()
     {
-        if (!Clicked)
+        if (!Clicked && GameManager.IsGamestarted && !GameManager.IsGamePaused)
         {
             Clicked = true;
             OnClicked?.Invoke(this);            
@@ -42,7 +42,7 @@ public class Linea : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (!Clicked)
+        if (!Clicked && GameManager.IsGamestarted && !GameManager.IsGamePaused)
             rend.material.color = colorNativo;
     }
 
