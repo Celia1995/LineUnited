@@ -19,6 +19,7 @@ public class Tablero : MonoBehaviour
     public AudioClip celdaFillClip;
     public Color colorFondo = new Color(0.2f, 0.2f, 0.2f);
     public ParticleSystem particulas;
+    public int jugadoresActivos;
     public Color[] jugadores = new Color[] { Color.red, Color.green, Color.blue, Color.yellow };
 
     AudioSource audioSource;
@@ -40,6 +41,11 @@ public class Tablero : MonoBehaviour
 
     public void Start()
     {
+        if (jugadoresActivos < 2)
+            jugadoresActivos = 2;
+        if (jugadoresActivos > 3)
+            jugadoresActivos = 3;
+
         Puntuaciones = new int[jugadores.Length];
 
         transform.position = Vector3.zero;  
@@ -207,6 +213,7 @@ public class Tablero : MonoBehaviour
             if (ultimaCelda != null)
             {
                 //Crear particula en ultimaCelda.trasform.position
+                
                 //Crear particula en celda.transform.position
             }
             ultimaCelda = celda;
