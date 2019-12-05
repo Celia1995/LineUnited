@@ -2158,7 +2158,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612210911}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 724588257}
+        m_MethodName: NivelTres
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &718355565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,7 +2497,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 751321173}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 724588257}
+        m_MethodName: NivelUno
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &760910820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4346,7 +4368,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1166041637}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 724588257}
+        m_MethodName: NivelDos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1169816082
 GameObject:
   m_ObjectHideFlags: 0
@@ -7459,7 +7492,7 @@ PrefabInstance:
     - target: {fileID: 7241799704160846270, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7241799704160846271, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
@@ -7594,32 +7627,32 @@ PrefabInstance:
     - target: {fileID: 1854875948257448979, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1854875948257448979, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1854875948257448979, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1854875947906017583, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1854875947906017583, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1854875947906017583, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1854875947575808426, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
@@ -7666,25 +7699,30 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1854875947575808426, guid: 8ddb50eb14088274daacb1e6e6de414f,
+        type: 3}
+      propertyPath: m_Value
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1854875948223498011, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1854875948223498011, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1854875947938920999, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1854875947938920999, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1854875948331805846, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
@@ -7744,17 +7782,17 @@ PrefabInstance:
     - target: {fileID: 7241799704420022037, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7241799704420022037, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7241799704420022037, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7241799704013593264, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
@@ -7806,15 +7844,20 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7241799704069730988, guid: 8ddb50eb14088274daacb1e6e6de414f,
+        type: 3}
+      propertyPath: m_Value
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7241799704452916253, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7241799704452916253, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7241799704585789392, guid: 8ddb50eb14088274daacb1e6e6de414f,
         type: 3}
@@ -8557,7 +8600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1963743732
 RectTransform:
   m_ObjectHideFlags: 0

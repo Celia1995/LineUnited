@@ -91,6 +91,21 @@ public class UIManager : MonoBehaviour
         segundaPantalla.SetActive(value);
     }
 
+    public void NivelUno()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Mapa1");
+    }
+
+    public void NivelDos()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GatoMiau");
+    }
+
+    public void NivelTres()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Mapa3");
+    }
+
     public void MostrarVolverBotonMenuPrincipal(bool value)
     {
         MostrarSegundaPantalla(!value);
@@ -106,5 +121,4 @@ public class UIManager : MonoBehaviour
         MostrarBotonJugar(!value);
         botonesSalir.SetActive(value);
     }
-
 }
