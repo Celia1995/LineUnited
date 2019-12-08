@@ -8,7 +8,7 @@ using TMPro;
 
 public class Tablero : MonoBehaviour
 {
-    public string NombreFichero;
+    public TextAsset fichero;
     public Celda celda;
     public Linea lineaH, lineaV;
     public Material[] materialsRegions;
@@ -64,7 +64,7 @@ public class Tablero : MonoBehaviour
 
         transform.position = Vector3.zero;  
 
-        intmap = ReadMap("./assets/SceneFile/"+NombreFichero);
+        intmap = ReadMap(fichero);
 
         int filas = intmap.Count;
         int columnas = 0;
@@ -272,21 +272,20 @@ public class Tablero : MonoBehaviour
         hud.TextoVictoria(jugador + 1, jugadores[jugador]);
     }
 
-    private List<List<int>> ReadMap(string file)
+    private List<List<int>> ReadMap(TextAsset file)
     {
         List<List<int>> tempMap = new List<List<int>>();
 
-        using (StreamReader reader = new StreamReader(file, Encoding.ASCII))
+        string[] lines = file.text.Split('\n');
+        for (int l = 0; l < lines.Length; l++)
         {
-            string str;
-            while ((str = reader.ReadLine()) != null)
-            {
-                List<int> currentLine = new List<int>();
-                for (int i = 0; i < str.Length; i++)
-                    currentLine.Add(Convert.ToInt32(str[i].ToString()));
-                tempMap.Add(currentLine);
-            }
+            string line = lines[l].Trim();
+            List<int> currentLine = new List<int>();
+            for (int c = 0; c < line.Length; c++)
+                currentLine.Add(Convert.ToInt32(line[c].ToString()));
+            tempMap.Add(currentLine);
         }
+
         return tempMap;
     }
 }
